@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace _8_blitz {
-	public partial class About: Page {
+	public partial class _Profile: Page {
 		protected void Page_Load(object sender, EventArgs e) {
 
 		}
