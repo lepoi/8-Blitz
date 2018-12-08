@@ -3,7 +3,25 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
 	<div class="row">
-		hola
+		<h1>
+			Search all uploaded Blitz
+		</h1>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>
+						Blitz
+					</th>
+					<th>
+						Author
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%= DirectoryListMarkup %>
+			</tbody>
+		</table>
 	</div>
 
 </asp:Content>

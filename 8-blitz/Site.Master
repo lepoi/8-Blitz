@@ -50,8 +50,18 @@
                     <a class="navbar-brand" runat="server" href="~/">8 - Blitz</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" style="width:auto;">
                         <li><a runat="server" href="~/Directory">Blitz Directory</a></li>
+						<li><a runat="server" href="~/Blitz">Create a Blitz</a></li>
+						<% if (LoggedIn) { %>
+						
+						<li><a runat="server" href="~/MyProfile"><%= Session["username"] %></a></li>
+
+						<% } else { %>
+						
+						<li><a runat="server" href="~/Login">Log In</a></li>
+
+						<% } %>
                     </ul>
                 </div>
             </div>

@@ -9,6 +9,8 @@ using System.Web.SessionState;
 
 namespace _8_blitz {
 	public class Global: HttpApplication {
+		public static bool LoggedIn = false;
+
 		void Application_Start(object sender, EventArgs e) {
 			// Code that runs on application startup
 			RouteConfig.RegisterRoutes(RouteTable.Routes);

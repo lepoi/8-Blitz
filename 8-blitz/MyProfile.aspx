@@ -9,26 +9,13 @@
 		<p>
 			<%: Session["about"] %>
 		</p>
+		<a runat="server" href="~/EditProfile">Edit my profile</a>
 	</div>
 
 	<div class="row">
-		<div class="col-sm-4 col-sm-offset-4">
-			<h2>Blitz created</h2>
-			
-			<div id="blitz-list"></div>
-			
-		</div>
-	</div>
+		<h2>Blitz created</h2>
 
-	<script>
-		function gotoBlitz(id) {
-			window.location.replace('localhost:49716/');
-		}
-		var str = '';
-		<% foreach (System.Data.DataRow Blitz in MyBlitz) { %>
-		str += '<div class="blitz-item"><button class="btn btn-outline-primary" onclick="gotoBlitz(<%= Blitz["id"] %>)"><%= Blitz["name"] %></button></div>';
-		<% } %>
-		document.getElementById("blitz-list").innerHTML = str;
-	</script>
+		<%= blitzListMarkup %>
+	</div>
 	
 </asp:Content>

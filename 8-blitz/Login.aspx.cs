@@ -36,7 +36,8 @@ namespace _8_blitz {
 				Cmd = new MySqlCommand("INSERT INTO User (username, email, password) VALUES (@username, @email, @password);", Conn);
 				Cmd.Parameters.AddWithValue("@email", email.Text);
 				Cmd.Parameters.AddWithValue("@username", username);
-				
+				Cmd.Parameters.AddWithValue("@username", password.Text);
+
 				// error registering
 				if (Cmd.ExecuteNonQuery() < 1)
 					labelRepeated.Text = "ocurrió un error, disculpe las molestias";
@@ -72,7 +73,8 @@ namespace _8_blitz {
 				Session["email"] = Data.Rows[0]["email"];
 				Session["username"] = Data.Rows[0]["username"];
 				Session["about"] = Data.Rows[0]["about"];
-
+				
+				Global.LoggedIn = true;
 				Response.Redirect("MyProfile.aspx");
 			}
 		}

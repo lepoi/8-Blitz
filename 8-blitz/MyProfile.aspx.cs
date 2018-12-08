@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.Web;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
@@ -11,7 +13,7 @@ namespace _8_blitz {
 		private MySqlCommand Cmd;
 		private MySqlDataAdapter Adapter;
 		private DataTable Data;
-		public DataRowCollection MyBlitz;
+		public string blitzListMarkup = "";
 
 		protected void Page_Load(object sender, EventArgs e) {
 			if (Session["email"] == null)
@@ -27,11 +29,16 @@ namespace _8_blitz {
 			Data = new DataTable();
 			Adapter.Fill(Data);
 
-			MyBlitz = Data.Rows;
+			if (!IsPostBack) {
+				for (int i = 0; i < Data.Rows.Count; i++) {
+					blitzListMarkup += "<div class=\"col-xs-4\"><a class=\"btn btn-info btn-block\" href=\"Listen.aspx?blitz=" + Data.Rows[i]["id"] + "\">" + Data.Rows[i]["name"] + "</a></div>";
+				}
+			}
 		}
 
-		public void gotoBlitz(int id) {
-			MessageBox.Show("" + id);
+		public void GoToBlitz(object sender, EventArgs e) {
+			Session["blitz"] = (sender as System.Web.UI.WebControls.Button).Attributes["id"];
+			Response.Redirect("Listen.aspx");
 		}
 	}
 }
